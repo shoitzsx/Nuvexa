@@ -21,7 +21,7 @@ await expect(
 ).toBeVisible();
 await expect(page.getByRole("link", { name: "Começar gratuitamente" })).toBeVisible();
 await page.getByRole("link", { name: "Começar gratuitamente" }).click();
-await expect(page.getByRole("heading", { name: "NUVEXA" })).toBeVisible();
+await expect(page.getByRole("img", { name: "Nuvexa" }).first()).toBeVisible();
 await page.locator('button[aria-label^="Ativar tema"]').first().click();
 
 await page.getByRole("link", { name: "Política de Privacidade" }).click();

@@ -12,6 +12,7 @@ import { ThemeToggle } from "../components/ThemeToggle";
 import { useAuth } from "../hooks/useAuth";
 import { getAuthErrorMessage } from "../lib/authErrors";
 import { isSupabaseConfigured } from "../lib/supabase";
+import logo from "../../logo.png";
 
 type AuthMode = "login" | "signup" | "magic";
 
@@ -158,11 +159,8 @@ export function LoginPage() {
     <main className="screen-enter min-h-screen bg-slate-50 px-4 py-8 text-slate-950 dark:bg-slate-950 dark:text-slate-100">
       <div className="mx-auto flex w-full max-w-6xl flex-col gap-6">
         <header className="flex items-center justify-between">
-          <Link
-            className="text-xl font-bold tracking-normal text-slate-950 dark:text-white"
-            to="/login"
-          >
-            NUVEXA
+          <Link aria-label="Nuvexa: página inicial" className="rounded-md bg-white p-1.5 shadow-sm" to="/">
+            <img alt="Nuvexa" className="h-8 w-auto" src={logo} />
           </Link>
           <ThemeToggle />
         </header>
@@ -173,9 +171,7 @@ export function LoginPage() {
               <KeyRound aria-hidden="true" size={18} />
               Gestão financeira pessoal
             </div>
-            <h1 className="mt-6 text-4xl font-bold tracking-normal text-slate-950 dark:text-white sm:text-5xl">
-              NUVEXA
-            </h1>
+            <img alt="Nuvexa" className="mt-6 h-auto w-full max-w-sm rounded-lg bg-white p-3 shadow-sm" src={logo} />
             <p className="mt-4 max-w-xl text-lg leading-8 text-slate-600 dark:text-slate-300">
               Organize receitas, despesas e compromissos em uma visão clara,
               privada e segura.

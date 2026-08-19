@@ -2,6 +2,7 @@ import { ShieldCheck } from "lucide-react";
 import { Link } from "react-router-dom";
 import { ThemeToggle } from "../components/ThemeToggle";
 import { useAuth } from "../hooks/useAuth";
+import logo from "../../logo.png";
 
 export function PrivacyPage() {
   const { user } = useAuth();
@@ -10,11 +11,8 @@ export function PrivacyPage() {
     <main className="screen-enter min-h-screen bg-slate-50 px-4 py-8 text-slate-950 dark:bg-slate-950 dark:text-slate-100">
       <div className="mx-auto grid w-full max-w-4xl gap-6">
         <header className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-          <Link
-            className="text-xl font-bold tracking-normal text-slate-950 dark:text-white"
-            to={user ? "/dashboard" : "/login"}
-          >
-            NUVEXA
+          <Link aria-label="Nuvexa: página inicial" className="rounded-md bg-white p-1.5 shadow-sm" to={user ? "/dashboard" : "/"}>
+            <img alt="Nuvexa" className="h-8 w-auto" src={logo} />
           </Link>
           <div className="flex items-center gap-2">
             <Link

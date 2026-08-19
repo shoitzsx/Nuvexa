@@ -5,6 +5,7 @@ import { toast } from "sonner";
 import { Button } from "./Button";
 import { ThemeToggle } from "./ThemeToggle";
 import { useAuth } from "../hooks/useAuth";
+import logo from "../../logo.png";
 
 const navLinkBase =
   "inline-flex min-h-10 shrink-0 items-center gap-2 rounded-md px-3 py-2 text-sm font-medium transition-colors";
@@ -31,9 +32,9 @@ export function AppLayout() {
         <div className="mx-auto flex w-full max-w-7xl flex-col gap-4 px-4 py-4 sm:px-6 lg:px-8">
           <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
             <div>
-              <p className="text-xl font-bold tracking-normal text-slate-950 dark:text-white">
-                FinanTrack
-              </p>
+              <div className="inline-flex rounded-md bg-white p-1.5 shadow-sm">
+                <img alt="Nuvexa" className="h-8 w-auto" src={logo} />
+              </div>
               <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">
                 {user?.email}
               </p>
