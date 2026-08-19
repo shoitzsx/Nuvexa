@@ -4,6 +4,7 @@ import { ProtectedRoute } from "./components/ProtectedRoute";
 import { AccountPage } from "./pages/AccountPage";
 import { DashboardPage } from "./pages/DashboardPage";
 import { LoginPage } from "./pages/LoginPage";
+import { LandingPage } from "./pages/LandingPage";
 import { NotFoundPage } from "./pages/NotFoundPage";
 import { PrivacyPage } from "./pages/PrivacyPage";
 import { IncomeSourcesPage } from "./pages/IncomeSourcesPage";
@@ -20,7 +21,7 @@ import { ReportsPage } from "./pages/ReportsPage";
 export function App() {
   return (
     <Routes>
-      <Route element={<Navigate replace to="/dashboard" />} path="/" />
+      <Route element={<LandingPage />} path="/" />
       <Route element={<LoginPage />} path="/login" />
       <Route element={<PrivacyPage />} path="/privacy" />
       <Route element={<ProtectedRoute />}>

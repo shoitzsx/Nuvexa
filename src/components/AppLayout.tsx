@@ -1,4 +1,5 @@
 import { BarChart3, Bell, CalendarDays, CreditCard, HandCoins, Layers3, LayoutDashboard, LogOut, PiggyBank, Repeat2, ShieldCheck, TrendingUp, UserRound, WalletCards } from "lucide-react";
+import { motion } from "framer-motion";
 import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 import { Button } from "./Button";
@@ -6,7 +7,7 @@ import { ThemeToggle } from "./ThemeToggle";
 import { useAuth } from "../hooks/useAuth";
 
 const navLinkBase =
-  "inline-flex min-h-10 items-center gap-2 rounded-md px-3 py-2 text-sm font-medium transition";
+  "inline-flex min-h-10 shrink-0 items-center gap-2 rounded-md px-3 py-2 text-sm font-medium transition-colors";
 
 export function AppLayout() {
   const { signOut, user } = useAuth();
@@ -50,7 +51,7 @@ export function AppLayout() {
             </div>
           </div>
 
-          <nav aria-label="Navegação principal" className="flex flex-wrap gap-2">
+          <nav aria-label="Navegação principal" className="-mx-4 flex gap-2 overflow-x-auto px-4 pb-1 sm:mx-0 sm:px-0">
             <NavLink
               className={({ isActive }) =>
                 `${navLinkBase} ${
@@ -206,9 +207,14 @@ export function AppLayout() {
         </div>
       </header>
 
-      <main className="mx-auto w-full max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+      <motion.main
+        animate={{ opacity: 1, y: 0 }}
+        className="mx-auto w-full max-w-7xl px-4 py-6 sm:px-6 lg:px-8"
+        initial={{ opacity: 0, y: 10 }}
+        transition={{ duration: 0.24, ease: "easeOut" }}
+      >
         <Outlet />
-      </main>
+      </motion.main>
     </div>
   );
 }

@@ -7,14 +7,14 @@ export function PrivacyPage() {
   const { user } = useAuth();
 
   return (
-    <main className="min-h-screen bg-slate-50 px-4 py-8 text-slate-950 dark:bg-slate-950 dark:text-slate-100">
+    <main className="screen-enter min-h-screen bg-slate-50 px-4 py-8 text-slate-950 dark:bg-slate-950 dark:text-slate-100">
       <div className="mx-auto grid w-full max-w-4xl gap-6">
         <header className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <Link
             className="text-xl font-bold tracking-normal text-slate-950 dark:text-white"
             to={user ? "/dashboard" : "/login"}
           >
-            FinanTrack
+            NUVEXA
           </Link>
           <div className="flex items-center gap-2">
             <Link
@@ -36,7 +36,7 @@ export function PrivacyPage() {
               Política de Privacidade
             </h1>
             <p className="mt-2 text-sm text-slate-500 dark:text-slate-400">
-              Versão 0.1.0
+              Como protegemos as informações da sua conta.
             </p>
           </div>
         </section>
@@ -45,7 +45,7 @@ export function PrivacyPage() {
           <div>
             <h2>Dados coletados</h2>
             <p className="mt-2">
-              O FinanTrack coleta o email usado para autenticação e as transações
+              A Nuvexa coleta o email usado para autenticação e as transações
               financeiras cadastradas pelo usuário, incluindo descrição, valor,
               tipo, categoria, data e observação opcional.
             </p>
@@ -63,7 +63,7 @@ export function PrivacyPage() {
             <h2>Compartilhamento</h2>
             <p className="mt-2">
               Os dados cadastrados não são compartilhados com terceiros pelo
-              FinanTrack. Eles são usados apenas para manter sua conta e suas
+              Nuvexa. Eles são usados apenas para manter sua conta e suas
               movimentações disponíveis com segurança.
             </p>
           </div>

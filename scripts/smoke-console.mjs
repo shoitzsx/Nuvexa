@@ -15,8 +15,13 @@ page.on("pageerror", (error) => {
   consoleIssues.push(`pageerror: ${error.message}`);
 });
 
-await page.goto(`${appUrl}/login`, { waitUntil: "networkidle" });
-await expect(page.getByRole("heading", { name: "FinanTrack" })).toBeVisible();
+await page.goto(appUrl, { waitUntil: "networkidle" });
+await expect(
+  page.getByRole("heading", { name: "Entenda para onde seu dinheiro vai." }),
+).toBeVisible();
+await expect(page.getByRole("link", { name: "Começar gratuitamente" })).toBeVisible();
+await page.getByRole("link", { name: "Começar gratuitamente" }).click();
+await expect(page.getByRole("heading", { name: "NUVEXA" })).toBeVisible();
 await page.locator('button[aria-label^="Ativar tema"]').first().click();
 
 await page.getByRole("link", { name: "Política de Privacidade" }).click();
@@ -36,8 +41,9 @@ if (!protectedRouteHandled) {
 }
 
 await page.setViewportSize({ width: 390, height: 844 });
-await page.goto(`${appUrl}/login`, { waitUntil: "networkidle" });
-await expect(page.getByRole("button", { name: "Criar conta" })).toBeVisible();
+await page.goto(appUrl, { waitUntil: "networkidle" });
+await page.getByRole("button", { name: "Abrir menu" }).click();
+await expect(page.getByRole("link", { name: "Criar conta grátis" })).toBeVisible();
 
 const layout = await page.evaluate(() => ({
   bodyWidth: document.body.scrollWidth,
