@@ -62,7 +62,6 @@ export function SocialProofNotification() {
             key={notificacao.nome}
             transition={{ duration: 0.5, ease: "easeOut" }}
           >
-            <p className="mb-3 text-[10px] font-bold uppercase tracking-[0.14em] text-slate-400">Demonstração</p>
             <div className="flex items-center gap-3">
               <div className="flex size-10 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-cyan-500 to-violet-600 text-sm font-black text-white">
                 {iniciais}
