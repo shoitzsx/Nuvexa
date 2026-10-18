@@ -115,6 +115,11 @@ test.describe("navegação pública", () => {
     await expect(page).toHaveURL(/\/privacy$/);
     await expect(page.getByRole("heading", { name: "Política de Privacidade" })).toBeVisible();
 
+    await page.goto("/dashboard");
+    await expect(page.getByRole("heading", { name: "Página não encontrada" })).toBeVisible();
+    await page.getByRole("link", { name: "Voltar ao início" }).click();
+    await expect(page).toHaveURL(/\/$/);
+
     await page.setViewportSize({ width: 390, height: 844 });
     await page.goto("/");
     await page.getByRole("button", { name: "Abrir menu" }).click();
