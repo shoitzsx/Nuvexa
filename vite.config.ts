@@ -10,7 +10,6 @@ export default defineConfig({
           charts: ["recharts"],
           icons: ["lucide-react"],
           react: ["react", "react-dom", "react-router-dom"],
-          supabase: ["@supabase/supabase-js"],
         },
       },
     },
