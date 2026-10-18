@@ -91,6 +91,49 @@ test.describe("notificações de prova social", () => {
   }
 });
 
+test.describe("ThemeToggle no cabeçalho mobile", () => {
+  for (const width of [320, 375, 390]) {
+    test(`visível, sem sobreposição e persistente ${width}px`, async ({ page }) => {
+      await page.setViewportSize({ width, height: 800 });
+      await page.emulateMedia({ colorScheme: "light" });
+      await page.goto("/", { waitUntil: "load" });
+
+      const toggle = page.locator("header").getByRole("button", { name: /Ativar tema/ });
+      const menu = page.getByRole("button", { name: "Abrir menu" });
+      await expect(toggle).toBeVisible();
+      await expect(menu).toBeVisible();
+
+      const t = (await toggle.boundingBox())!;
+      const m = (await menu.boundingBox())!;
+      expect(t.x + t.width).toBeLessThanOrEqual(m.x);
+      expect(m.x + m.width).toBeLessThanOrEqual(width);
+      expect(await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth)).toBeLessThanOrEqual(0);
+
+      const isDark = () => page.evaluate(() => document.documentElement.classList.contains("dark"));
+      const before = await isDark();
+      await toggle.click();
+      expect(await isDark()).toBe(!before);
+
+      await page.reload({ waitUntil: "load" });
+      expect(await isDark()).toBe(!before);
+
+      await page.getByRole("button", { name: "Abrir menu" }).click();
+      await expect(page.getByRole("link", { name: "Criar conta grátis" })).toBeVisible();
+    });
+  }
+
+  test("não aparece duplicado em sm e acima", async ({ page }) => {
+    for (const width of [768, 1024, 1440]) {
+      await page.setViewportSize({ width, height: 800 });
+      await page.goto("/", { waitUntil: "load" });
+      const visible = await page.locator("header").getByRole("button", { name: /Ativar tema/ }).evaluateAll(
+        (els) => els.filter((el) => (el as HTMLElement).offsetParent !== null).length,
+      );
+      expect(visible).toBe(1);
+    }
+  });
+});
+
 test.describe("navegação pública", () => {
   test("CTAs, privacidade e menu móvel", async ({ page }) => {
     const consoleIssues: string[] = [];
