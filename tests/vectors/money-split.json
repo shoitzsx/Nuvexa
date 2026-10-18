@@ -1,0 +1,11 @@
+{
+  "description": "Divisão exata em centavos: as primeiras `total mod parts` partes recebem 1 centavo a mais.",
+  "cases": [
+    { "name": "R$ 100,00 em 3x", "totalCents": 10000, "parts": 3, "expected": [3334, 3333, 3333] },
+    { "name": "R$ 1.200,00 em 6x", "totalCents": 120000, "parts": 6, "expected": [20000, 20000, 20000, 20000, 20000, 20000] },
+    { "name": "5 centavos em 3", "totalCents": 5, "parts": 3, "expected": [2, 2, 1] },
+    { "name": "R$ 1,00 em 7", "totalCents": 100, "parts": 7, "expected": [15, 15, 14, 14, 14, 14, 14] },
+    { "name": "1 centavo em 1", "totalCents": 1, "parts": 1, "expected": [1] },
+    { "name": "R$ 99,99 em 2", "totalCents": 9999, "parts": 2, "expected": [5000, 4999] }
+  ]
+}

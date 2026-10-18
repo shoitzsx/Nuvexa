@@ -1,0 +1,556 @@
+{
+  "description": "Projeção a partir de 2026-08-10, corrente 6.500. Salário 5.000 dia 5, aluguel 1.500 dia 3, internet 100 dia 20; faturas: ago 900, set 800, out 200. Mês 0 = mês atual.",
+  "cases": [
+    {
+      "name": "P1 fim de ago 5.500, set 8.100, out 11.300",
+      "today": "2026-08-10",
+      "months": 3,
+      "accounts": [
+        {
+          "id": "chk",
+          "openingCents": 650000,
+          "included": true
+        }
+      ],
+      "invoices": [
+        {
+          "id": "aug",
+          "card": "cc",
+          "ref": "2026-08-01",
+          "close": "2026-08-05",
+          "due": "2026-08-12"
+        },
+        {
+          "id": "sep",
+          "card": "cc",
+          "ref": "2026-09-01",
+          "close": "2026-09-05",
+          "due": "2026-09-12"
+        },
+        {
+          "id": "oct",
+          "card": "cc",
+          "ref": "2026-10-01",
+          "close": "2026-10-05",
+          "due": "2026-10-12"
+        }
+      ],
+      "payments": [],
+      "contributions": [],
+      "rules": [
+        {
+          "id": "r-salary",
+          "kind": "income",
+          "amountCents": 500000,
+          "accountId": "chk",
+          "dayOfMonth": 5,
+          "startDate": "2026-01-01",
+          "endDate": null,
+          "active": true
+        },
+        {
+          "id": "r-rent",
+          "kind": "expense",
+          "amountCents": 150000,
+          "accountId": "chk",
+          "dayOfMonth": 3,
+          "startDate": "2026-01-01",
+          "endDate": null,
+          "active": true
+        },
+        {
+          "id": "r-internet",
+          "kind": "expense",
+          "amountCents": 10000,
+          "accountId": "chk",
+          "dayOfMonth": 20,
+          "startDate": "2026-01-01",
+          "endDate": null,
+          "active": true
+        }
+      ],
+      "transactions": [
+        {
+          "id": "i-aug",
+          "kind": "expense",
+          "status": "posted",
+          "invoice": "aug",
+          "amountCents": 90000,
+          "postedDate": "2026-07-01"
+        },
+        {
+          "id": "i-sep",
+          "kind": "expense",
+          "status": "posted",
+          "invoice": "sep",
+          "amountCents": 80000,
+          "postedDate": "2026-07-01"
+        },
+        {
+          "id": "i-oct",
+          "kind": "expense",
+          "status": "posted",
+          "invoice": "oct",
+          "amountCents": 20000,
+          "postedDate": "2026-07-01"
+        }
+      ],
+      "expected": {
+        "startCents": 650000,
+        "endCents": [
+          550000,
+          810000,
+          1130000
+        ]
+      }
+    },
+    {
+      "name": "P2 ocorrência já materializada não duplica",
+      "today": "2026-08-10",
+      "months": 3,
+      "accounts": [
+        {
+          "id": "chk",
+          "openingCents": 650000,
+          "included": true
+        }
+      ],
+      "invoices": [
+        {
+          "id": "aug",
+          "card": "cc",
+          "ref": "2026-08-01",
+          "close": "2026-08-05",
+          "due": "2026-08-12"
+        },
+        {
+          "id": "sep",
+          "card": "cc",
+          "ref": "2026-09-01",
+          "close": "2026-09-05",
+          "due": "2026-09-12"
+        },
+        {
+          "id": "oct",
+          "card": "cc",
+          "ref": "2026-10-01",
+          "close": "2026-10-05",
+          "due": "2026-10-12"
+        }
+      ],
+      "payments": [],
+      "contributions": [],
+      "rules": [
+        {
+          "id": "r-salary",
+          "kind": "income",
+          "amountCents": 500000,
+          "accountId": "chk",
+          "dayOfMonth": 5,
+          "startDate": "2026-01-01",
+          "endDate": null,
+          "active": true
+        },
+        {
+          "id": "r-rent",
+          "kind": "expense",
+          "amountCents": 150000,
+          "accountId": "chk",
+          "dayOfMonth": 3,
+          "startDate": "2026-01-01",
+          "endDate": null,
+          "active": true
+        },
+        {
+          "id": "r-internet",
+          "kind": "expense",
+          "amountCents": 10000,
+          "accountId": "chk",
+          "dayOfMonth": 20,
+          "startDate": "2026-01-01",
+          "endDate": null,
+          "active": true
+        }
+      ],
+      "transactions": [
+        {
+          "id": "i-aug",
+          "kind": "expense",
+          "status": "posted",
+          "invoice": "aug",
+          "amountCents": 90000,
+          "postedDate": "2026-07-01"
+        },
+        {
+          "id": "i-sep",
+          "kind": "expense",
+          "status": "posted",
+          "invoice": "sep",
+          "amountCents": 80000,
+          "postedDate": "2026-07-01"
+        },
+        {
+          "id": "i-oct",
+          "kind": "expense",
+          "status": "posted",
+          "invoice": "oct",
+          "amountCents": 20000,
+          "postedDate": "2026-07-01"
+        },
+        {
+          "id": "m-int",
+          "kind": "expense",
+          "status": "planned",
+          "amountCents": 10000,
+          "accountId": "chk",
+          "expectedDate": "2026-08-20",
+          "recurrenceId": "r-internet",
+          "recurrenceKey": "2026-08-20"
+        }
+      ],
+      "expected": {
+        "startCents": 650000,
+        "endCents": [
+          550000,
+          810000,
+          1130000
+        ]
+      }
+    },
+    {
+      "name": "P3 ocorrência cancelada não volta",
+      "today": "2026-08-10",
+      "months": 3,
+      "accounts": [
+        {
+          "id": "chk",
+          "openingCents": 650000,
+          "included": true
+        }
+      ],
+      "invoices": [
+        {
+          "id": "aug",
+          "card": "cc",
+          "ref": "2026-08-01",
+          "close": "2026-08-05",
+          "due": "2026-08-12"
+        },
+        {
+          "id": "sep",
+          "card": "cc",
+          "ref": "2026-09-01",
+          "close": "2026-09-05",
+          "due": "2026-09-12"
+        },
+        {
+          "id": "oct",
+          "card": "cc",
+          "ref": "2026-10-01",
+          "close": "2026-10-05",
+          "due": "2026-10-12"
+        }
+      ],
+      "payments": [],
+      "contributions": [],
+      "rules": [
+        {
+          "id": "r-salary",
+          "kind": "income",
+          "amountCents": 500000,
+          "accountId": "chk",
+          "dayOfMonth": 5,
+          "startDate": "2026-01-01",
+          "endDate": null,
+          "active": true
+        },
+        {
+          "id": "r-rent",
+          "kind": "expense",
+          "amountCents": 150000,
+          "accountId": "chk",
+          "dayOfMonth": 3,
+          "startDate": "2026-01-01",
+          "endDate": null,
+          "active": true
+        },
+        {
+          "id": "r-internet",
+          "kind": "expense",
+          "amountCents": 10000,
+          "accountId": "chk",
+          "dayOfMonth": 20,
+          "startDate": "2026-01-01",
+          "endDate": null,
+          "active": true
+        }
+      ],
+      "transactions": [
+        {
+          "id": "i-aug",
+          "kind": "expense",
+          "status": "posted",
+          "invoice": "aug",
+          "amountCents": 90000,
+          "postedDate": "2026-07-01"
+        },
+        {
+          "id": "i-sep",
+          "kind": "expense",
+          "status": "posted",
+          "invoice": "sep",
+          "amountCents": 80000,
+          "postedDate": "2026-07-01"
+        },
+        {
+          "id": "i-oct",
+          "kind": "expense",
+          "status": "posted",
+          "invoice": "oct",
+          "amountCents": 20000,
+          "postedDate": "2026-07-01"
+        },
+        {
+          "id": "m-int2",
+          "kind": "expense",
+          "status": "canceled",
+          "amountCents": 10000,
+          "accountId": "chk",
+          "expectedDate": "2026-09-20",
+          "recurrenceId": "r-internet",
+          "recurrenceKey": "2026-09-20"
+        }
+      ],
+      "expected": {
+        "startCents": 650000,
+        "endCents": [
+          550000,
+          820000,
+          1140000
+        ]
+      }
+    },
+    {
+      "name": "P4 fatura parcialmente paga: só o saldo em aberto é descontado",
+      "today": "2026-08-10",
+      "months": 3,
+      "accounts": [
+        {
+          "id": "chk",
+          "openingCents": 650000,
+          "included": true
+        }
+      ],
+      "invoices": [
+        {
+          "id": "aug",
+          "card": "cc",
+          "ref": "2026-08-01",
+          "close": "2026-08-05",
+          "due": "2026-08-12"
+        },
+        {
+          "id": "sep",
+          "card": "cc",
+          "ref": "2026-09-01",
+          "close": "2026-09-05",
+          "due": "2026-09-12"
+        },
+        {
+          "id": "oct",
+          "card": "cc",
+          "ref": "2026-10-01",
+          "close": "2026-10-05",
+          "due": "2026-10-12"
+        }
+      ],
+      "payments": [
+        {
+          "invoice": "aug",
+          "accountId": "chk",
+          "amountCents": 40000,
+          "paidDate": "2026-08-10"
+        }
+      ],
+      "contributions": [],
+      "rules": [
+        {
+          "id": "r-salary",
+          "kind": "income",
+          "amountCents": 500000,
+          "accountId": "chk",
+          "dayOfMonth": 5,
+          "startDate": "2026-01-01",
+          "endDate": null,
+          "active": true
+        },
+        {
+          "id": "r-rent",
+          "kind": "expense",
+          "amountCents": 150000,
+          "accountId": "chk",
+          "dayOfMonth": 3,
+          "startDate": "2026-01-01",
+          "endDate": null,
+          "active": true
+        },
+        {
+          "id": "r-internet",
+          "kind": "expense",
+          "amountCents": 10000,
+          "accountId": "chk",
+          "dayOfMonth": 20,
+          "startDate": "2026-01-01",
+          "endDate": null,
+          "active": true
+        }
+      ],
+      "transactions": [
+        {
+          "id": "i-aug",
+          "kind": "expense",
+          "status": "posted",
+          "invoice": "aug",
+          "amountCents": 90000,
+          "postedDate": "2026-07-01"
+        },
+        {
+          "id": "i-sep",
+          "kind": "expense",
+          "status": "posted",
+          "invoice": "sep",
+          "amountCents": 80000,
+          "postedDate": "2026-07-01"
+        },
+        {
+          "id": "i-oct",
+          "kind": "expense",
+          "status": "posted",
+          "invoice": "oct",
+          "amountCents": 20000,
+          "postedDate": "2026-07-01"
+        }
+      ],
+      "expected": {
+        "startCents": 610000,
+        "endCents": [
+          550000,
+          810000,
+          1130000
+        ]
+      }
+    },
+    {
+      "name": "P5 aluguel de agosto lançado hoje reduz saldo e projeção na mesma medida (-1.500 em todos os meses)",
+      "today": "2026-08-10",
+      "months": 3,
+      "accounts": [
+        {
+          "id": "chk",
+          "openingCents": 650000,
+          "included": true
+        }
+      ],
+      "invoices": [
+        {
+          "id": "aug",
+          "card": "cc",
+          "ref": "2026-08-01",
+          "close": "2026-08-05",
+          "due": "2026-08-12"
+        },
+        {
+          "id": "sep",
+          "card": "cc",
+          "ref": "2026-09-01",
+          "close": "2026-09-05",
+          "due": "2026-09-12"
+        },
+        {
+          "id": "oct",
+          "card": "cc",
+          "ref": "2026-10-01",
+          "close": "2026-10-05",
+          "due": "2026-10-12"
+        }
+      ],
+      "payments": [],
+      "contributions": [],
+      "rules": [
+        {
+          "id": "r-salary",
+          "kind": "income",
+          "amountCents": 500000,
+          "accountId": "chk",
+          "dayOfMonth": 5,
+          "startDate": "2026-01-01",
+          "endDate": null,
+          "active": true
+        },
+        {
+          "id": "r-rent",
+          "kind": "expense",
+          "amountCents": 150000,
+          "accountId": "chk",
+          "dayOfMonth": 3,
+          "startDate": "2026-01-01",
+          "endDate": null,
+          "active": true
+        },
+        {
+          "id": "r-internet",
+          "kind": "expense",
+          "amountCents": 10000,
+          "accountId": "chk",
+          "dayOfMonth": 20,
+          "startDate": "2026-01-01",
+          "endDate": null,
+          "active": true
+        }
+      ],
+      "transactions": [
+        {
+          "id": "i-aug",
+          "kind": "expense",
+          "status": "posted",
+          "invoice": "aug",
+          "amountCents": 90000,
+          "postedDate": "2026-07-01"
+        },
+        {
+          "id": "i-sep",
+          "kind": "expense",
+          "status": "posted",
+          "invoice": "sep",
+          "amountCents": 80000,
+          "postedDate": "2026-07-01"
+        },
+        {
+          "id": "i-oct",
+          "kind": "expense",
+          "status": "posted",
+          "invoice": "oct",
+          "amountCents": 20000,
+          "postedDate": "2026-07-01"
+        },
+        {
+          "id": "rent-aug",
+          "kind": "expense",
+          "status": "posted",
+          "amountCents": 150000,
+          "accountId": "chk",
+          "expectedDate": "2026-08-03",
+          "postedDate": "2026-08-10"
+        }
+      ],
+      "expected": {
+        "startCents": 500000,
+        "endCents": [
+          400000,
+          660000,
+          980000
+        ]
+      }
+    }
+  ]
+}
