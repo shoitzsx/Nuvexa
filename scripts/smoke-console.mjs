@@ -24,21 +24,16 @@ await page.getByRole("link", { name: "Começar gratuitamente" }).click();
 await expect(page.getByRole("img", { name: "Nuvexa" }).first()).toBeVisible();
 await page.locator('button[aria-label^="Ativar tema"]').first().click();
 
-await page.getByRole("link", { name: "Política de Privacidade" }).click();
+await page.goto(appUrl, { waitUntil: "networkidle" });
+await page.getByRole("link", { name: "Privacidade" }).click();
 await expect(
   page.getByRole("heading", { name: "Política de Privacidade" }),
 ).toBeVisible();
 
 await page.goto(`${appUrl}/dashboard`, { waitUntil: "networkidle" });
-
-const setupNotice = page.getByText("Site temporariamente indisponível");
-const loginHeading = page.getByRole("heading", { name: "Entrar" });
-const protectedRouteHandled =
-  (await setupNotice.count()) > 0 || (await loginHeading.count()) > 0;
-
-if (!protectedRouteHandled) {
-  throw new Error("Rota protegida não exibiu aviso ou login.");
-}
+await expect(
+  page.getByRole("heading", { name: "Página não encontrada" }),
+).toBeVisible();
 
 await page.setViewportSize({ width: 390, height: 844 });
 await page.goto(appUrl, { waitUntil: "networkidle" });
