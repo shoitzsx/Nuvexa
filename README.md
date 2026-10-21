@@ -1,10 +1,24 @@
+<div align="center">
+
 # 💰 Gestão Financeira
 
 **Para entender para onde vai o seu dinheiro e planejar os próximos meses, sem planilha.**
 
-> 🚧 **Em reconstrução.** Hoje já dá para ver a página de apresentação. As telas para usar o app no dia a dia ainda estão sendo construídas.
+![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
+![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white)
+![Supabase](https://img.shields.io/badge/Supabase-3FCF8E?style=for-the-badge&logo=supabase&logoColor=white)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?style=for-the-badge&logo=postgresql&logoColor=white)
+![Vitest](https://img.shields.io/badge/Vitest-6E9F18?style=for-the-badge&logo=vitest&logoColor=white)
 
-Feito com React, TypeScript e Supabase · [🛠️ ver a parte técnica](#parte-tecnica)
+[![Ver demonstração](https://img.shields.io/badge/Ver_demonstra%C3%A7%C3%A3o-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://gestao-financeiranine.vercel.app)
+
+[🛠️ Ver a parte técnica](#parte-tecnica)
+
+</div>
+
+> 🚧 **Em reconstrução.** Hoje já dá para ver a página de apresentação. As telas para usar o app no dia a dia ainda estão sendo construídas.
 
 ---
 
@@ -36,8 +50,9 @@ Muita gente só descobre que o mês apertou quando a fatura chega. A ideia do Ge
 
 ## 👤 Quem fez
 
-Projeto individual desenvolvido por **Lucas Izaias**.
+Projeto pessoal desenvolvido por **Lucas Izaias**. A ideia é, no futuro, deixar o app disponível para qualquer pessoa usar.
 
+- 🌐 Demonstração: [gestao-financeiranine.vercel.app](https://gestao-financeiranine.vercel.app)
 - 📂 Repositório: [github.com/shoitzsx/Nuvexa](https://github.com/shoitzsx/Nuvexa)
 - 🐙 GitHub: [github.com/shoitzsx](https://github.com/shoitzsx)
 - ✉️ E-mail: [lucas.mateus.izaias.santos@gmail.com](mailto:lucas.mateus.izaias.santos@gmail.com)
@@ -172,7 +187,6 @@ npm run db:stop
 - O banco existe apenas como prova de conceito local. Os objetos `poc_*` serão substituídos pelo esquema definitivo, e a arquitetura ainda não foi validada num projeto Supabase hospedado.
 - Duas decisões financeiras aprovadas ainda não foram implementadas em `projection.ts`: projeções separadas de patrimônio total e saldo operacional, e receitas atrasadas tratadas como pendentes. Ver [`docs/decisions/`](docs/decisions/2026-10-18-financial-rules-and-user-deletion.md).
 - Os testes de integração ainda não rodam em CI.
-- Esta versão ainda não tem demonstração pública.
 
 ### Próximos passos técnicos (planejado, ainda não implementado)
 
