@@ -1,0 +1,41 @@
+{
+  "description": "Plano de compra no cartão: valores em centavos, competência de cada parcela (a partir da data original) e fatura que a recebe.",
+  "cases": [
+    {
+      "name": "R$ 1.200,00 em 6x em 10/ago (fecha 5, vence 12)",
+      "closingDay": 5, "dueDay": 12, "totalCents": 120000, "installments": 6, "purchaseDate": "2026-08-10", "firstInvoiceOffset": 0,
+      "expected": [
+        { "number": 1, "amountCents": 20000, "competenceDate": "2026-08-10", "referenceMonth": "2026-09-01", "closingDate": "2026-09-05", "dueDate": "2026-09-12" },
+        { "number": 2, "amountCents": 20000, "competenceDate": "2026-09-10", "referenceMonth": "2026-10-01", "closingDate": "2026-10-05", "dueDate": "2026-10-12" },
+        { "number": 3, "amountCents": 20000, "competenceDate": "2026-10-10", "referenceMonth": "2026-11-01", "closingDate": "2026-11-05", "dueDate": "2026-11-12" },
+        { "number": 4, "amountCents": 20000, "competenceDate": "2026-11-10", "referenceMonth": "2026-12-01", "closingDate": "2026-12-05", "dueDate": "2026-12-12" },
+        { "number": 5, "amountCents": 20000, "competenceDate": "2026-12-10", "referenceMonth": "2027-01-01", "closingDate": "2027-01-05", "dueDate": "2027-01-12" },
+        { "number": 6, "amountCents": 20000, "competenceDate": "2027-01-10", "referenceMonth": "2027-02-01", "closingDate": "2027-02-05", "dueDate": "2027-02-12" }
+      ]
+    },
+    {
+      "name": "R$ 100,00 em 3x em 31/jan (competência não acumula erro)",
+      "closingDay": 5, "dueDay": 12, "totalCents": 10000, "installments": 3, "purchaseDate": "2026-01-31", "firstInvoiceOffset": 0,
+      "expected": [
+        { "number": 1, "amountCents": 3334, "competenceDate": "2026-01-31", "referenceMonth": "2026-02-01", "closingDate": "2026-02-05", "dueDate": "2026-02-12" },
+        { "number": 2, "amountCents": 3333, "competenceDate": "2026-02-28", "referenceMonth": "2026-03-01", "closingDate": "2026-03-05", "dueDate": "2026-03-12" },
+        { "number": 3, "amountCents": 3333, "competenceDate": "2026-03-31", "referenceMonth": "2026-04-01", "closingDate": "2026-04-05", "dueDate": "2026-04-12" }
+      ]
+    },
+    {
+      "name": "à vista no dia do fechamento",
+      "closingDay": 5, "dueDay": 12, "totalCents": 5000, "installments": 1, "purchaseDate": "2026-08-05", "firstInvoiceOffset": 0,
+      "expected": [
+        { "number": 1, "amountCents": 5000, "competenceDate": "2026-08-05", "referenceMonth": "2026-08-01", "closingDate": "2026-08-05", "dueDate": "2026-08-12" }
+      ]
+    },
+    {
+      "name": "ajuste manual: uma fatura adiante, competência inalterada",
+      "closingDay": 5, "dueDay": 12, "totalCents": 4000, "installments": 2, "purchaseDate": "2026-08-05", "firstInvoiceOffset": 1,
+      "expected": [
+        { "number": 1, "amountCents": 2000, "competenceDate": "2026-08-05", "referenceMonth": "2026-09-01", "closingDate": "2026-09-05", "dueDate": "2026-09-12" },
+        { "number": 2, "amountCents": 2000, "competenceDate": "2026-09-05", "referenceMonth": "2026-10-01", "closingDate": "2026-10-05", "dueDate": "2026-10-12" }
+      ]
+    }
+  ]
+}

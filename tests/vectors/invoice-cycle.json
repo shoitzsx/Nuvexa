@@ -1,0 +1,16 @@
+{
+  "description": "Fatura de uma compra. Fechamento inclusivo; vencimento no mesmo mês se dueDay > closingDay, senão no seguinte; dias inexistentes viram o último dia do mês.",
+  "cases": [
+    { "name": "landing: fecha dia 5, compra em 6/ago vai para a fatura de set", "closingDay": 5, "dueDay": 12, "purchaseDate": "2026-08-06", "expected": { "referenceMonth": "2026-09-01", "closingDate": "2026-09-05", "dueDate": "2026-09-12" } },
+    { "name": "compra no dia do fechamento fica na fatura que fecha", "closingDay": 5, "dueDay": 12, "purchaseDate": "2026-08-05", "expected": { "referenceMonth": "2026-08-01", "closingDate": "2026-08-05", "dueDate": "2026-08-12" } },
+    { "name": "compra um dia antes do fechamento", "closingDay": 5, "dueDay": 12, "purchaseDate": "2026-08-04", "expected": { "referenceMonth": "2026-08-01", "closingDate": "2026-08-05", "dueDate": "2026-08-12" } },
+    { "name": "vencimento no mês seguinte", "closingDay": 25, "dueDay": 5, "purchaseDate": "2026-08-10", "expected": { "referenceMonth": "2026-08-01", "closingDate": "2026-08-25", "dueDate": "2026-09-05" } },
+    { "name": "compra depois do fechamento 25", "closingDay": 25, "dueDay": 5, "purchaseDate": "2026-08-26", "expected": { "referenceMonth": "2026-09-01", "closingDate": "2026-09-25", "dueDate": "2026-10-05" } },
+    { "name": "virada de ano", "closingDay": 5, "dueDay": 12, "purchaseDate": "2026-12-31", "expected": { "referenceMonth": "2027-01-01", "closingDate": "2027-01-05", "dueDate": "2027-01-12" } },
+    { "name": "fechamento 31 em abril", "closingDay": 31, "dueDay": 10, "purchaseDate": "2026-04-30", "expected": { "referenceMonth": "2026-04-01", "closingDate": "2026-04-30", "dueDate": "2026-05-10" } },
+    { "name": "fechamento 31 em fevereiro", "closingDay": 31, "dueDay": 10, "purchaseDate": "2027-02-28", "expected": { "referenceMonth": "2027-02-01", "closingDate": "2027-02-28", "dueDate": "2027-03-10" } },
+    { "name": "fechamento 31 em fevereiro bissexto", "closingDay": 31, "dueDay": 10, "purchaseDate": "2028-02-29", "expected": { "referenceMonth": "2028-02-01", "closingDate": "2028-02-29", "dueDate": "2028-03-10" } },
+    { "name": "vencimento 31 em fevereiro", "closingDay": 28, "dueDay": 31, "purchaseDate": "2026-02-10", "expected": { "referenceMonth": "2026-02-01", "closingDate": "2026-02-28", "dueDate": "2026-02-28" } },
+    { "name": "vencimento igual ao fechamento vai para o mês seguinte", "closingDay": 5, "dueDay": 5, "purchaseDate": "2026-08-01", "expected": { "referenceMonth": "2026-08-01", "closingDate": "2026-08-05", "dueDate": "2026-09-05" } }
+  ]
+}

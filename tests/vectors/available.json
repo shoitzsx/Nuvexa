@@ -1,0 +1,767 @@
+{
+  "description": "Dinheiro disponível em 2026-08-10. Base: corrente 6.500 (incluída), poupança 2.000 (fora do disponível), reserva virtual 500 na corrente, internet planejada 100 (20/ago), salário previsto 5/set, fatura de agosto 900 (vence 12/ago) e de setembro 500 (vence 12/set).",
+  "cases": [
+    {
+      "name": "A1 base: 6.500 - reserva 500 - internet 100 - fatura de agosto 900",
+      "today": "2026-08-10",
+      "accounts": [
+        {
+          "id": "chk",
+          "openingCents": 650000,
+          "included": true
+        },
+        {
+          "id": "sav",
+          "openingCents": 200000,
+          "included": false
+        }
+      ],
+      "invoices": [
+        {
+          "id": "aug",
+          "card": "cc",
+          "ref": "2026-08-01",
+          "close": "2026-08-05",
+          "due": "2026-08-12"
+        },
+        {
+          "id": "sep",
+          "card": "cc",
+          "ref": "2026-09-01",
+          "close": "2026-09-05",
+          "due": "2026-09-12"
+        }
+      ],
+      "contributions": [
+        {
+          "goalId": "viagem",
+          "accountId": "chk",
+          "kind": "deposit",
+          "amountCents": 50000
+        }
+      ],
+      "payments": [],
+      "transactions": [
+        {
+          "id": "internet",
+          "kind": "expense",
+          "status": "planned",
+          "amountCents": 10000,
+          "accountId": "chk",
+          "expectedDate": "2026-08-20"
+        },
+        {
+          "id": "salary",
+          "kind": "income",
+          "status": "planned",
+          "amountCents": 500000,
+          "accountId": "chk",
+          "expectedDate": "2026-09-05"
+        },
+        {
+          "id": "aug-1",
+          "kind": "expense",
+          "status": "posted",
+          "invoice": "aug",
+          "amountCents": 90000,
+          "postedDate": "2026-07-01"
+        },
+        {
+          "id": "sep-orig",
+          "kind": "expense",
+          "status": "posted",
+          "invoice": "sep",
+          "amountCents": 20000,
+          "postedDate": "2026-07-01"
+        },
+        {
+          "id": "sep-2",
+          "kind": "expense",
+          "status": "posted",
+          "invoice": "sep",
+          "amountCents": 30000,
+          "postedDate": "2026-07-01"
+        }
+      ],
+      "expected": {
+        "horizon": "2026-09-04",
+        "cashCents": 650000,
+        "reserveEffectiveCents": 50000,
+        "plannedExpensesCents": 10000,
+        "invoiceObligationsCents": 90000,
+        "availableCents": 500000
+      }
+    },
+    {
+      "name": "A2 liquidar a internet não muda o disponível",
+      "today": "2026-08-10",
+      "accounts": [
+        {
+          "id": "chk",
+          "openingCents": 650000,
+          "included": true
+        },
+        {
+          "id": "sav",
+          "openingCents": 200000,
+          "included": false
+        }
+      ],
+      "invoices": [
+        {
+          "id": "aug",
+          "card": "cc",
+          "ref": "2026-08-01",
+          "close": "2026-08-05",
+          "due": "2026-08-12"
+        },
+        {
+          "id": "sep",
+          "card": "cc",
+          "ref": "2026-09-01",
+          "close": "2026-09-05",
+          "due": "2026-09-12"
+        }
+      ],
+      "contributions": [
+        {
+          "goalId": "viagem",
+          "accountId": "chk",
+          "kind": "deposit",
+          "amountCents": 50000
+        }
+      ],
+      "payments": [],
+      "transactions": [
+        {
+          "id": "internet",
+          "kind": "expense",
+          "status": "posted",
+          "amountCents": 10000,
+          "accountId": "chk",
+          "expectedDate": "2026-08-20",
+          "postedDate": "2026-08-10"
+        },
+        {
+          "id": "salary",
+          "kind": "income",
+          "status": "planned",
+          "amountCents": 500000,
+          "accountId": "chk",
+          "expectedDate": "2026-09-05"
+        },
+        {
+          "id": "aug-1",
+          "kind": "expense",
+          "status": "posted",
+          "invoice": "aug",
+          "amountCents": 90000,
+          "postedDate": "2026-07-01"
+        },
+        {
+          "id": "sep-orig",
+          "kind": "expense",
+          "status": "posted",
+          "invoice": "sep",
+          "amountCents": 20000,
+          "postedDate": "2026-07-01"
+        },
+        {
+          "id": "sep-2",
+          "kind": "expense",
+          "status": "posted",
+          "invoice": "sep",
+          "amountCents": 30000,
+          "postedDate": "2026-07-01"
+        }
+      ],
+      "expected": {
+        "horizon": "2026-09-04",
+        "cashCents": 640000,
+        "plannedExpensesCents": 0,
+        "availableCents": 500000
+      }
+    },
+    {
+      "name": "A3 pagar 400 da fatura de agosto só move a obrigação para dentro do saldo",
+      "today": "2026-08-10",
+      "accounts": [
+        {
+          "id": "chk",
+          "openingCents": 650000,
+          "included": true
+        },
+        {
+          "id": "sav",
+          "openingCents": 200000,
+          "included": false
+        }
+      ],
+      "invoices": [
+        {
+          "id": "aug",
+          "card": "cc",
+          "ref": "2026-08-01",
+          "close": "2026-08-05",
+          "due": "2026-08-12"
+        },
+        {
+          "id": "sep",
+          "card": "cc",
+          "ref": "2026-09-01",
+          "close": "2026-09-05",
+          "due": "2026-09-12"
+        }
+      ],
+      "contributions": [
+        {
+          "goalId": "viagem",
+          "accountId": "chk",
+          "kind": "deposit",
+          "amountCents": 50000
+        }
+      ],
+      "payments": [
+        {
+          "invoice": "aug",
+          "accountId": "chk",
+          "amountCents": 40000,
+          "paidDate": "2026-08-10"
+        }
+      ],
+      "transactions": [
+        {
+          "id": "internet",
+          "kind": "expense",
+          "status": "planned",
+          "amountCents": 10000,
+          "accountId": "chk",
+          "expectedDate": "2026-08-20"
+        },
+        {
+          "id": "salary",
+          "kind": "income",
+          "status": "planned",
+          "amountCents": 500000,
+          "accountId": "chk",
+          "expectedDate": "2026-09-05"
+        },
+        {
+          "id": "aug-1",
+          "kind": "expense",
+          "status": "posted",
+          "invoice": "aug",
+          "amountCents": 90000,
+          "postedDate": "2026-07-01"
+        },
+        {
+          "id": "sep-orig",
+          "kind": "expense",
+          "status": "posted",
+          "invoice": "sep",
+          "amountCents": 20000,
+          "postedDate": "2026-07-01"
+        },
+        {
+          "id": "sep-2",
+          "kind": "expense",
+          "status": "posted",
+          "invoice": "sep",
+          "amountCents": 30000,
+          "postedDate": "2026-07-01"
+        }
+      ],
+      "expected": {
+        "cashCents": 610000,
+        "invoiceObligationsCents": 50000,
+        "availableCents": 500000
+      }
+    },
+    {
+      "name": "A4 receita só em 16/set: fatura de setembro entra uma vez (200 + 300)",
+      "today": "2026-08-10",
+      "accounts": [
+        {
+          "id": "chk",
+          "openingCents": 650000,
+          "included": true
+        },
+        {
+          "id": "sav",
+          "openingCents": 200000,
+          "included": false
+        }
+      ],
+      "invoices": [
+        {
+          "id": "aug",
+          "card": "cc",
+          "ref": "2026-08-01",
+          "close": "2026-08-05",
+          "due": "2026-08-12"
+        },
+        {
+          "id": "sep",
+          "card": "cc",
+          "ref": "2026-09-01",
+          "close": "2026-09-05",
+          "due": "2026-09-12"
+        }
+      ],
+      "contributions": [
+        {
+          "goalId": "viagem",
+          "accountId": "chk",
+          "kind": "deposit",
+          "amountCents": 50000
+        }
+      ],
+      "payments": [],
+      "transactions": [
+        {
+          "id": "internet",
+          "kind": "expense",
+          "status": "planned",
+          "amountCents": 10000,
+          "accountId": "chk",
+          "expectedDate": "2026-08-20"
+        },
+        {
+          "id": "salary",
+          "kind": "income",
+          "status": "planned",
+          "amountCents": 500000,
+          "accountId": "chk",
+          "expectedDate": "2026-09-16"
+        },
+        {
+          "id": "aug-1",
+          "kind": "expense",
+          "status": "posted",
+          "invoice": "aug",
+          "amountCents": 90000,
+          "postedDate": "2026-07-01"
+        },
+        {
+          "id": "sep-orig",
+          "kind": "expense",
+          "status": "posted",
+          "invoice": "sep",
+          "amountCents": 20000,
+          "postedDate": "2026-07-01"
+        },
+        {
+          "id": "sep-2",
+          "kind": "expense",
+          "status": "posted",
+          "invoice": "sep",
+          "amountCents": 30000,
+          "postedDate": "2026-07-01"
+        }
+      ],
+      "expected": {
+        "horizon": "2026-09-15",
+        "invoiceObligationsCents": 140000,
+        "availableCents": 450000
+      }
+    },
+    {
+      "name": "A5 estorno de 200 no cartão, fatura fora do horizonte: nada muda",
+      "today": "2026-08-10",
+      "accounts": [
+        {
+          "id": "chk",
+          "openingCents": 650000,
+          "included": true
+        },
+        {
+          "id": "sav",
+          "openingCents": 200000,
+          "included": false
+        }
+      ],
+      "invoices": [
+        {
+          "id": "aug",
+          "card": "cc",
+          "ref": "2026-08-01",
+          "close": "2026-08-05",
+          "due": "2026-08-12"
+        },
+        {
+          "id": "sep",
+          "card": "cc",
+          "ref": "2026-09-01",
+          "close": "2026-09-05",
+          "due": "2026-09-12"
+        }
+      ],
+      "contributions": [
+        {
+          "goalId": "viagem",
+          "accountId": "chk",
+          "kind": "deposit",
+          "amountCents": 50000
+        }
+      ],
+      "payments": [],
+      "transactions": [
+        {
+          "id": "internet",
+          "kind": "expense",
+          "status": "planned",
+          "amountCents": 10000,
+          "accountId": "chk",
+          "expectedDate": "2026-08-20"
+        },
+        {
+          "id": "salary",
+          "kind": "income",
+          "status": "planned",
+          "amountCents": 500000,
+          "accountId": "chk",
+          "expectedDate": "2026-09-05"
+        },
+        {
+          "id": "aug-1",
+          "kind": "expense",
+          "status": "posted",
+          "invoice": "aug",
+          "amountCents": 90000,
+          "postedDate": "2026-07-01"
+        },
+        {
+          "id": "sep-orig",
+          "kind": "expense",
+          "status": "posted",
+          "invoice": "sep",
+          "amountCents": 20000,
+          "postedDate": "2026-07-01"
+        },
+        {
+          "id": "sep-2",
+          "kind": "expense",
+          "status": "posted",
+          "invoice": "sep",
+          "amountCents": 30000,
+          "postedDate": "2026-07-01"
+        },
+        {
+          "id": "r1",
+          "kind": "refund",
+          "status": "posted",
+          "invoice": "sep",
+          "amountCents": 20000,
+          "refundOf": "sep-orig",
+          "postedDate": "2026-08-10"
+        }
+      ],
+      "expected": {
+        "cashCents": 650000,
+        "availableCents": 500000
+      }
+    },
+    {
+      "name": "A6 estorno de 200 no cartão, fatura dentro do horizonte: obrigação cai 200, saldo não muda",
+      "today": "2026-08-10",
+      "accounts": [
+        {
+          "id": "chk",
+          "openingCents": 650000,
+          "included": true
+        },
+        {
+          "id": "sav",
+          "openingCents": 200000,
+          "included": false
+        }
+      ],
+      "invoices": [
+        {
+          "id": "aug",
+          "card": "cc",
+          "ref": "2026-08-01",
+          "close": "2026-08-05",
+          "due": "2026-08-12"
+        },
+        {
+          "id": "sep",
+          "card": "cc",
+          "ref": "2026-09-01",
+          "close": "2026-09-05",
+          "due": "2026-09-12"
+        }
+      ],
+      "contributions": [
+        {
+          "goalId": "viagem",
+          "accountId": "chk",
+          "kind": "deposit",
+          "amountCents": 50000
+        }
+      ],
+      "payments": [],
+      "transactions": [
+        {
+          "id": "internet",
+          "kind": "expense",
+          "status": "planned",
+          "amountCents": 10000,
+          "accountId": "chk",
+          "expectedDate": "2026-08-20"
+        },
+        {
+          "id": "salary",
+          "kind": "income",
+          "status": "planned",
+          "amountCents": 500000,
+          "accountId": "chk",
+          "expectedDate": "2026-09-16"
+        },
+        {
+          "id": "aug-1",
+          "kind": "expense",
+          "status": "posted",
+          "invoice": "aug",
+          "amountCents": 90000,
+          "postedDate": "2026-07-01"
+        },
+        {
+          "id": "sep-orig",
+          "kind": "expense",
+          "status": "posted",
+          "invoice": "sep",
+          "amountCents": 20000,
+          "postedDate": "2026-07-01"
+        },
+        {
+          "id": "sep-2",
+          "kind": "expense",
+          "status": "posted",
+          "invoice": "sep",
+          "amountCents": 30000,
+          "postedDate": "2026-07-01"
+        },
+        {
+          "id": "r1",
+          "kind": "refund",
+          "status": "posted",
+          "invoice": "sep",
+          "amountCents": 20000,
+          "refundOf": "sep-orig",
+          "postedDate": "2026-08-10"
+        }
+      ],
+      "expected": {
+        "cashCents": 650000,
+        "invoiceObligationsCents": 120000,
+        "availableCents": 470000
+      }
+    },
+    {
+      "name": "A7 estorno maior que a fatura: excedente é crédito, não dinheiro",
+      "today": "2026-08-10",
+      "accounts": [
+        {
+          "id": "chk",
+          "openingCents": 650000,
+          "included": true
+        },
+        {
+          "id": "sav",
+          "openingCents": 200000,
+          "included": false
+        }
+      ],
+      "invoices": [
+        {
+          "id": "aug",
+          "card": "cc",
+          "ref": "2026-08-01",
+          "close": "2026-08-05",
+          "due": "2026-08-12"
+        },
+        {
+          "id": "sep",
+          "card": "cc",
+          "ref": "2026-09-01",
+          "close": "2026-09-05",
+          "due": "2026-09-12"
+        },
+        {
+          "id": "oct",
+          "card": "cc",
+          "ref": "2026-10-01",
+          "close": "2026-10-05",
+          "due": "2026-10-12"
+        }
+      ],
+      "contributions": [
+        {
+          "goalId": "viagem",
+          "accountId": "chk",
+          "kind": "deposit",
+          "amountCents": 50000
+        }
+      ],
+      "payments": [],
+      "transactions": [
+        {
+          "id": "internet",
+          "kind": "expense",
+          "status": "planned",
+          "amountCents": 10000,
+          "accountId": "chk",
+          "expectedDate": "2026-08-20"
+        },
+        {
+          "id": "salary",
+          "kind": "income",
+          "status": "planned",
+          "amountCents": 500000,
+          "accountId": "chk",
+          "expectedDate": "2026-09-16"
+        },
+        {
+          "id": "aug-1",
+          "kind": "expense",
+          "status": "posted",
+          "invoice": "aug",
+          "amountCents": 90000,
+          "postedDate": "2026-07-01"
+        },
+        {
+          "id": "sep-orig",
+          "kind": "expense",
+          "status": "posted",
+          "invoice": "sep",
+          "amountCents": 20000,
+          "postedDate": "2026-07-01"
+        },
+        {
+          "id": "sep-2",
+          "kind": "expense",
+          "status": "posted",
+          "invoice": "sep",
+          "amountCents": 30000,
+          "postedDate": "2026-07-01"
+        },
+        {
+          "id": "oct-1",
+          "kind": "expense",
+          "status": "posted",
+          "invoice": "oct",
+          "amountCents": 20000,
+          "postedDate": "2026-07-01"
+        },
+        {
+          "id": "r1",
+          "kind": "refund",
+          "status": "posted",
+          "invoice": "sep",
+          "amountCents": 70000,
+          "refundOf": "aug-1",
+          "postedDate": "2026-08-10"
+        }
+      ],
+      "expected": {
+        "cashCents": 650000,
+        "invoiceObligationsCents": 90000,
+        "availableCents": 500000
+      }
+    },
+    {
+      "name": "A8 reserva dentro da poupança (fora do disponível) não é descontada de novo",
+      "today": "2026-08-10",
+      "accounts": [
+        {
+          "id": "chk",
+          "openingCents": 650000,
+          "included": true
+        },
+        {
+          "id": "sav",
+          "openingCents": 200000,
+          "included": false
+        }
+      ],
+      "invoices": [
+        {
+          "id": "aug",
+          "card": "cc",
+          "ref": "2026-08-01",
+          "close": "2026-08-05",
+          "due": "2026-08-12"
+        },
+        {
+          "id": "sep",
+          "card": "cc",
+          "ref": "2026-09-01",
+          "close": "2026-09-05",
+          "due": "2026-09-12"
+        }
+      ],
+      "contributions": [
+        {
+          "goalId": "viagem",
+          "accountId": "chk",
+          "kind": "deposit",
+          "amountCents": 50000
+        },
+        {
+          "goalId": "reserva",
+          "accountId": "sav",
+          "kind": "deposit",
+          "amountCents": 100000
+        }
+      ],
+      "payments": [],
+      "transactions": [
+        {
+          "id": "internet",
+          "kind": "expense",
+          "status": "planned",
+          "amountCents": 10000,
+          "accountId": "chk",
+          "expectedDate": "2026-08-20"
+        },
+        {
+          "id": "salary",
+          "kind": "income",
+          "status": "planned",
+          "amountCents": 500000,
+          "accountId": "chk",
+          "expectedDate": "2026-09-05"
+        },
+        {
+          "id": "aug-1",
+          "kind": "expense",
+          "status": "posted",
+          "invoice": "aug",
+          "amountCents": 90000,
+          "postedDate": "2026-07-01"
+        },
+        {
+          "id": "sep-orig",
+          "kind": "expense",
+          "status": "posted",
+          "invoice": "sep",
+          "amountCents": 20000,
+          "postedDate": "2026-07-01"
+        },
+        {
+          "id": "sep-2",
+          "kind": "expense",
+          "status": "posted",
+          "invoice": "sep",
+          "amountCents": 30000,
+          "postedDate": "2026-07-01"
+        }
+      ],
+      "expected": {
+        "reserveEffectiveCents": 50000,
+        "availableCents": 500000
+      }
+    }
+  ]
+}

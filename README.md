@@ -1,180 +1,197 @@
-# Gestão Financeira
+<div align="center">
 
-Aplicação web de gestão financeira pessoal com autenticação, painel financeiro, filtros, relatórios, projeções, alertas e acompanhamento de hábitos de consumo.
+# 💰 Gestão Financeira
 
-A solução foi desenvolvida com React + Vite + TypeScript no frontend e Supabase no backend, com autenticação, armazenamento de dados e regras de segurança no banco.
+**Para entender para onde vai o seu dinheiro e planejar os próximos meses, sem planilha.**
 
-## Status do projeto
+![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
+![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white)
+![Supabase](https://img.shields.io/badge/Supabase-3FCF8E?style=for-the-badge&logo=supabase&logoColor=white)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?style=for-the-badge&logo=postgresql&logoColor=white)
+![Vitest](https://img.shields.io/badge/Vitest-6E9F18?style=for-the-badge&logo=vitest&logoColor=white)
 
-- Frontend em produção: https://finantrack-oeqqszpqe-lucasizaias.vercel.app
-- Repositório: https://github.com/shoitzsx/Gestao
-- Stack principal: React, Vite, TypeScript, Tailwind CSS, Supabase, Recharts
+[![Ver demonstração](https://img.shields.io/badge/Ver_demonstra%C3%A7%C3%A3o-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://gestao-financeiranine.vercel.app)
 
-## Visão geral
+[🛠️ Ver a parte técnica](#parte-tecnica)
 
-A plataforma permite:
+</div>
 
-- cadastro e login de usuários
-- registro de receitas e despesas
-- filtros por tipo, categoria, descrição e período
-- cards financeiros com resumo do saldo e movimentações
-- gráficos e dashboards com indicadores financeiros
-- projeção de saldo para meses futuros
-- alertas de vencimentos e faturas
-- gestão de fontes de renda, despesas recorrentes, cartões, dívidas, parcelas e metas
-- relatórios em CSV
-- exclusão de conta com limpeza de dados do usuário
+> 🚧 **Em reconstrução.** Hoje já dá para ver a página de apresentação. As telas para usar o app no dia a dia ainda estão sendo construídas.
 
-## Principais funcionalidades
+---
 
-- Autenticação com email e senha
-- Rotas protegidas para usuários autenticados
-- CRUD de transações por usuário logado
-- Dados de demonstração por conta do usuário
-- Personalização visual com tema claro e escuro
-- Layout e UX responsivos
-- RLS no Supabase para proteção dos dados
-- Fluxo de deploy em Vercel com variáveis de ambiente
+## 🎯 Para que serve
 
-## Tecnologias utilizadas
+Muita gente só descobre que o mês apertou quando a fatura chega. A ideia do Gestão Financeira (que aparece na tela com a marca **Nuvexa**) é ajudar você a:
 
-- React 18
-- Vite 6
-- TypeScript
-- Tailwind CSS
-- Supabase JS
-- Recharts
-- Vitest
-- Playwright para smoke test
+- 💸 ver para onde o dinheiro está indo;
+- 💳 acompanhar a fatura do cartão e as compras parceladas;
+- 🐷 separar reservas e acompanhar metas;
+- 🧮 saber quanto você realmente pode gastar;
+- 📈 ver como o seu saldo deve ficar nos próximos meses.
 
-## Requisitos
+## ✅ O que já existe hoje
 
-- Node.js 20+
-- npm 10+
-- Conta no Supabase
-- Conta no Vercel
+- 🌐 **Página de apresentação**, que se adapta ao celular e ao computador.
+- 🌗 **Tema claro e escuro**: o site lembra a sua escolha.
+- 🧮 **As contas por trás do app já foram programadas e têm testes automáticos**: saldo, fatura do cartão, parcelas, reservas, valor disponível e projeção dos próximos meses. Elas ainda não aparecem na tela.
+- 🔒 **A base de segurança dos dados já tem testes automáticos** num ambiente local. A regra é que cada pessoa só possa ver e alterar os próprios dados.
 
-## Configuração local
+## 🚧 O que ainda está sendo construído
 
-1. Clone o projeto
-2. Instale as dependências:
+- 🔑 Entrar com a sua conta (hoje a página de acesso mostra "Em construção").
+- 📝 Telas para registrar receitas, despesas, cartões e metas.
+- 📊 Gráficos e projeções na tela.
+- 🗑️ Excluir a sua conta junto com todos os seus dados.
 
-```bash
-npm install
-```
+> ℹ️ Os valores e os planos mostrados na página de apresentação ("Nuvexa Plus", "Nuvexa Pro" e "Nuvexa IA") são apenas ilustrativos e ainda não existem. As notificações de atividade que aparecem na página também são simuladas.
 
-3. Crie um arquivo `.env` na raiz com as variáveis abaixo:
+## 👤 Quem fez
 
-```bash
-VITE_SUPABASE_URL=https://seu-projeto.supabase.co
-VITE_SUPABASE_ANON_KEY=sua-chave-anon-publica
-```
+Projeto pessoal desenvolvido por **Lucas Izaias**. A ideia é, no futuro, deixar o app disponível para qualquer pessoa usar.
 
-O arquivo `.env.example` já contém o modelo esperado.
+- 🌐 Demonstração: [gestao-financeiranine.vercel.app](https://gestao-financeiranine.vercel.app)
+- 📂 Repositório: [github.com/shoitzsx/Nuvexa](https://github.com/shoitzsx/Nuvexa)
+- 🐙 GitHub: [github.com/shoitzsx](https://github.com/shoitzsx)
+- ✉️ E-mail: [lucas.mateus.izaias.santos@gmail.com](mailto:lucas.mateus.izaias.santos@gmail.com)
 
-## Configuração do Supabase
+---
 
-1. Crie um projeto no Supabase.
-2. Abra Project Settings > API.
-3. Copie a URL do projeto para `VITE_SUPABASE_URL`.
-4. Copie a chave `anon public` para `VITE_SUPABASE_ANON_KEY`.
-5. No SQL Editor, execute o script em `supabase/schema.sql`.
-6. Em Authentication, habilite o provedor de email.
-7. Para produção, configure as URLs de redirect da Vercel no painel de autenticação do Supabase.
+<a name="parte-tecnica"></a>
 
-## Executar localmente
+## 🛠️ Parte técnica
 
-```bash
-npm run dev
-```
+Esta seção explica como o projeto foi feito, para quem quer avaliar o código ou rodá-lo localmente.
 
-A aplicação será iniciada em:
+### Linguagens e tecnologias
 
-```bash
-http://localhost:5173
-```
+| Área | Tecnologias |
+|---|---|
+| Linguagens | TypeScript, SQL (PostgreSQL), CSS e JavaScript (scripts de teste) |
+| Interface | React 18, Vite 6, Tailwind CSS 3, React Router 7, Framer Motion, Lucide |
+| Banco de dados (local) | Supabase CLI (versão fixada em `package.json`), PostgreSQL, Row Level Security |
+| Qualidade | Vitest (testes unitários e de integração), Playwright (regressão visual e smoke test) |
 
-## Build de produção
+### Situação desta versão
 
-```bash
-npm run build
-```
+Esta versão reúne a página de apresentação, o núcleo de regras financeiras e uma prova de conceito da arquitetura de segurança do banco. Rotas existentes: `/` (landing), `/privacy` (política de privacidade, com conteúdo provisório: "Documento em revisão"), `/login` (aviso "Em construção") e a página de rota não encontrada.
 
-Os artefatos finais ficam na pasta `dist`.
+A implementação anterior (FinanTrack) está preservada na tag `legacy-finantrack` (commit `c7ae87a`).
 
-## Testes
+### Núcleo financeiro (`src/domain`)
 
-### Testes unitários e de lógica
+Módulos em TypeScript puro, sem dependência de interface ou de banco de dados. Entradas inválidas são rejeitadas com `DomainError` e um código de erro estável.
 
-```bash
-npm test
-```
+| Módulo | Responsabilidade |
+|---|---|
+| `money` | Valores em centavos inteiros (sem ponto flutuante), soma, divisão e rateio, conversão e formatação em reais |
+| `dates` | Datas de negócio no formato `AAAA-MM-DD`, sem fuso horário: anos bissextos, fim de mês, soma de meses e dias |
+| `invoiceCycle` | Datas de fechamento e vencimento da fatura e em qual fatura cada compra entra |
+| `installments` | Planejamento de compras parceladas no cartão |
+| `balance` | Saldo por conta e verificação de débito |
+| `consumption` | Consumo mensal |
+| `cardLimit` | Saldo das faturas e resumo do limite do cartão |
+| `reserves` | Reservas por conta e saldo de metas |
+| `available` | Valor disponível em um horizonte de tempo |
+| `projection` | Projeção de saldos mês a mês |
+| `validation` | Validação de lançamentos, transferências, pagamentos e aportes |
 
-### Smoke test
+Os casos de teste compartilhados ficam em `tests/vectors/` (JSON) e são verificados por `src/domain/vectors.test.ts`.
 
-```bash
-APP_URL=http://127.0.0.1:5180 npm run test:smoke
-```
+### Arquitetura de segurança do banco (prova de conceito)
 
-Este teste valida que não há erros de console e que não houve overflow horizontal.
+As migrações em `supabase/migrations/` são uma **prova de conceito descartável**, executada apenas no Supabase local:
 
-## Deploy na Vercel
+- O papel `nuvexa_rpc` (`NOLOGIN`, `NOBYPASSRLS`) é dono das tabelas e das funções de escrita.
+- Todas as tabelas usam `FORCE ROW LEVEL SECURITY`.
+- As funções `SECURITY DEFINER` ficam no schema `private`, fora da API de dados. A API só chama funções `SECURITY INVOKER` do schema `public`.
+- O papel `authenticated` tem apenas permissão de leitura nas tabelas.
 
-1. Conecte o repositório ao Vercel.
-2. Selecione o framework Vite.
-3. Configure as variáveis de ambiente:
-   - `VITE_SUPABASE_URL`
-   - `VITE_SUPABASE_ANON_KEY`
-4. Faça o deploy em produção.
-5. Adicione a URL da Vercel no Supabase em Authentication > URL Configuration.
+A suíte em `tests/integration/` verifica essas regras com requisições HTTP reais à API local, usando usuários fictícios criados no próprio teste. Os achados e as pendências estão em [`docs/security/strategy-and-poc-findings.md`](docs/security/strategy-and-poc-findings.md).
 
-### Arquivo de roteamento Vercel
-
-Foi incluído o arquivo `vercel.json` para garantir que rotas internas funcionem corretamente em SPA.
-
-## Estrutura do projeto
+<details>
+<summary><strong>📁 Estrutura do projeto</strong></summary>
 
 ```text
 .
-├── .env.example
-├── .gitignore
-├── README.md
-├── index.html
-├── package.json
-├── package-lock.json
-├── postcss.config.js
-├── tailwind.config.js
-├── tsconfig.json
-├── vite.config.ts
-├── vercel.json
+├── docs/
+│   ├── decisions/        # decisões sobre regras financeiras e exclusão de usuário
+│   └── security/         # estratégia de segurança e achados da prova de conceito
 ├── scripts/
-│   └── smoke-console.mjs
+│   └── smoke-console.mjs # smoke test: erros de console e overflow horizontal
 ├── src/
-│   ├── App.tsx
-│   ├── components/
-│   ├── constants/
-│   ├── hooks/
-│   ├── lib/
-│   ├── pages/
-│   ├── styles/
-│   ├── types/
-│   ├── main.tsx
-│   └── vite-env.d.ts
+│   ├── components/       # componentes da landing page
+│   ├── domain/           # núcleo financeiro e seus testes
+│   ├── hooks/            # tema claro/escuro
+│   ├── pages/            # landing, privacidade, acesso e 404
+│   └── styles/
 ├── supabase/
-│   ├── migrations/
-│   └── schema.sql
-└── dist/
+│   ├── config.toml       # configuração do Supabase local
+│   └── migrations/       # prova de conceito da arquitetura de segurança
+└── tests/
+    ├── integration/      # testes da arquitetura de segurança (Supabase local)
+    ├── vectors/          # casos de teste compartilhados do núcleo financeiro
+    └── visual/           # regressão visual da landing page
 ```
 
-## Observações de segurança e operação
+</details>
 
-- As tabelas de dados do usuário usam `user_id` ligado ao `auth.users`.
-- A aplicação usa Row Level Security para proteger acesso e manipulação dos dados.
-- A exclusão de conta é tratada via função SQL para remover registros do usuário e seus dados.
-- O valor da chave pública do Supabase fica visível no frontend por design do Supabase, como ocorre em qualquer cliente público.
+### Executar localmente
 
-## Conclusão
+**Pré-requisitos:** Node.js e npm (verificado com Node.js 24 e npm 11). Docker Desktop **somente** para os testes de integração.
 
-O projeto está pronto para uso em ambiente de desenvolvimento e produção, com frontend publicado no Vercel e integração com Supabase configurada para autenticação e persistência de dados.
+```bash
+git clone https://github.com/shoitzsx/Nuvexa.git
+cd Nuvexa
+npm ci
+npm run dev
+```
 
-Se houver a necessidade de uma próxima etapa, o próximo salto natural seria a criação de um domínio customizado, testes de UX em produção e refinamento de métricas financeiras e automações.
+Esta versão **não precisa de arquivo `.env`**, porque a interface ainda não se conecta a nenhum serviço externo.
+
+```bash
+npm run build    # verificação de tipos (tsc) + build do Vite em dist/
+npm run preview  # serve o build localmente
+```
+
+### Testes
+
+| Comando | O que verifica | Requisitos |
+|---|---|---|
+| `npm test` | Núcleo financeiro (Vitest), incluindo os casos de `tests/vectors/` | Nenhum |
+| `npm run test:int` | Arquitetura de segurança do banco | Docker e o Supabase local em execução (ver abaixo) |
+| `npx playwright test` | Regressão visual da landing: notificações, botões de ação, privacidade e menu móvel. Gera o build e o serve em `127.0.0.1:4173` | Navegador do Playwright (`npx playwright install chromium`) |
+| `npm run test:smoke` | Erros de console e overflow horizontal em um servidor já em execução (padrão: `http://127.0.0.1:5173`; outro endereço via `APP_URL`) | Servidor rodando e navegador do Playwright |
+
+As imagens de referência do teste visual ficam em `tests/visual/__snapshots__/`, fora do Git. Para gerá-las de novo, use `npx playwright test --update-snapshots=all`, somente depois de confirmar que a mudança visual é intencional.
+
+<details>
+<summary><strong>🧪 Testes de integração com o Supabase local</strong></summary>
+
+```bash
+npm run db:start   # sobe o Supabase local (Docker)
+npm run db:migrate # aplica migrações pendentes
+npm run test:int
+npm run db:stop
+```
+
+> **Atenção:** o Supabase CLI publica as portas da API (54321) e do PostgreSQL (54322) em todas as interfaces de rede. Antes de rodar, leia a seção "Isolamento de rede" em [`docs/security/strategy-and-poc-findings.md`](docs/security/strategy-and-poc-findings.md). Os testes se recusam a rodar contra qualquer endereço que não seja `127.0.0.1`.
+
+</details>
+
+### Limitações técnicas conhecidas
+
+- O núcleo financeiro ainda não está ligado à interface, e não há autenticação.
+- O banco existe apenas como prova de conceito local. Os objetos `poc_*` serão substituídos pelo esquema definitivo, e a arquitetura ainda não foi validada num projeto Supabase hospedado.
+- Duas decisões financeiras aprovadas ainda não foram implementadas em `projection.ts`: projeções separadas de patrimônio total e saldo operacional, e receitas atrasadas tratadas como pendentes. Ver [`docs/decisions/`](docs/decisions/2026-10-18-financial-rules-and-user-deletion.md).
+- Os testes de integração ainda não rodam em CI.
+
+### Próximos passos técnicos (planejado, ainda não implementado)
+
+1. Substituir a prova de conceito pelo esquema financeiro definitivo, mantendo o modelo de segurança validado.
+2. Validar a arquitetura num projeto Supabase hospedado.
+3. Implementar as decisões financeiras pendentes nas projeções.
+4. Construir a autenticação e as telas da aplicação sobre o núcleo financeiro.
+5. Implementar a exclusão controlada de conta descrita em `docs/decisions/`.
